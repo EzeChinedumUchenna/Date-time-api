@@ -21,7 +21,7 @@ jobs:
         sudo mv opa_linux_amd64 /usr/local/bin/opa
 
     - name: Run OPA Policy Check
-      run: opa eval --data policy/ --input terraform/modules/deployments --format=json 'data.kubernetes.security.deny'
+      run: opa eval --data policy/ --input terraform/modules/deployments/main.tf --format=json 'data.kubernetes.security.deny'
 
   build-and-push:
     name: Build and Push Docker Image
