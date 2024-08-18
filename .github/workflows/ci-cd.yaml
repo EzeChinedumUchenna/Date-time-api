@@ -71,5 +71,5 @@ jobs:
       run: |
         cd terraform
         terraform init -input=false
-        terraform plan -input=false -out=tfplan
+        terraform plan -input=false -out=tfplan -var="docker_image_tag=${{ github.run_number }}"
         terraform apply -input=false tfplan

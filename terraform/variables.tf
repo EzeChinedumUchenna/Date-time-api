@@ -83,3 +83,7 @@ variable "app_gateway_name" {
   default     = "appGw-Ingress"
 }
 
+variable "docker_image_tag" {
+  type = string
+}
+
