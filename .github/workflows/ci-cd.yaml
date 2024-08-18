@@ -67,11 +67,9 @@ jobs:
         echo "ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}" >> $GITHUB_ENV
         echo "ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
 
-    - name: Terraform Init
-      run: terraform init -input=false
-
-    - name: Terraform Plan
-      run: terraform plan -input=false -out=tfplan
-
-    - name: Terraform Apply
-      run: terraform apply -input=false tfplan
+    - name: Setup Terraform and Execute Commands
+      run: |
+        cd terraform
+        terraform init -input=false
+        terraform plan -input=false -out=tfplan
+        terraform apply -input=false tfplan
