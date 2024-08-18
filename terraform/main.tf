@@ -73,7 +73,7 @@ module "deployments" {
   namespace           = "api-namespace"
   deployment_name     = "api-deployment"
   service_name        = "api-service"
-  image               = "nginx"
+  image               = "nedumdocker/my-python-api:${ github.run_number }"
   replicas            = 1
 }
 
