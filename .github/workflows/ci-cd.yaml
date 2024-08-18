@@ -65,7 +65,7 @@ jobs:
 
     - name: Attempt to Unlock State
       run: terraform force-unlock faade456-7f14-5c3b-5545-94115323ff69
-      continue-on-error: true  # Continue even if this step fails
+      continue-on-error: true  # Continue even if this step fails.
 
     - name: Set up Azure authentication
       run: |
