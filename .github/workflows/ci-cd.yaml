@@ -9,6 +9,7 @@ jobs:
   terraform-policy-check:
     name: Check Terraform Security Policies with OPA
     runs-on: ubuntu-latest
+    timeout-minutes: 20  # Set timeout to 20 minutes
 
     steps:
     - name: Checkout code
@@ -27,6 +28,7 @@ jobs:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
     needs: terraform-policy-check
+    timeout-minutes: 20  # Set timeout to 20 minutes
 
     steps:
     - name: Checkout code
@@ -47,6 +49,7 @@ jobs:
     name: Deploy to Azure Kubernetes Service (AKS)
     runs-on: ubuntu-latest
     needs: build-and-push
+    timeout-minutes: 20  # Set timeout to 20 minutes
 
     steps:
     - name: Checkout code
@@ -72,5 +75,4 @@ jobs:
         cd terraform
         terraform init -input=false
         terraform plan -input=false -out=tfplan -var="docker_image_tag=${{ github.run_number }}"
-        terraform destroy 
-        
+        terraform apply -input=false tfplan

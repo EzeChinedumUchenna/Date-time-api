@@ -8,7 +8,7 @@ data "azurerm_client_config" "current_user" {}
 # IAM Role Assignment for the AKS Managed Identity
 resource "azurerm_role_assignment" "aks_contributor" {
   scope                = data.azurerm_subscription.primary.id
-  role_definition_name = "Contributor"
+  role_definition_name = "owner"
   principal_id         = var.aks_client_id
 }
 
