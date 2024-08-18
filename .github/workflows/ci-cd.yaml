@@ -63,6 +63,10 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+    - name: Attempt to Unlock State
+      run: terraform force-unlock faade456-7f14-5c3b-5545-94115323ff69
+      continue-on-error: true  # Continue even if this step fails
+
     - name: Set up Azure authentication
       run: |
         echo "ARM_CLIENT_ID=${{ secrets.ARM_CLIENT_ID }}" >> $GITHUB_ENV
