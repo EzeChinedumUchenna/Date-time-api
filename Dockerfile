@@ -10,8 +10,8 @@ RUN groupadd -r appuser && useradd -r -g appuser appuser && mkdir /app && chown 
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Flask app into the container
-COPY data-time-app.py /app/
+# Copy the Flask app into the container..
+COPY . /app/
 
 # Install Flask as root
 RUN pip install --no-cache-dir Flask
